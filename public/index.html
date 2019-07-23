@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link rel="icon" href="<%= BASE_URL %>favicon.jpeg" />
+    <title>金币转盘抽好礼</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+    <script>
+      window.getMenuConfig_Local = function() {
+        return JSON.stringify({
+          config: [
+            {
+              code: 'fenxiang',
+              title: '分享',
+              shareList:
+                'sinaweibo,tencentweibo,qzone,wechat,wechatmoments,email,shortmessage,qq',
+              shareJson: {
+                shareContent:
+                  '登录联通手机营业厅，话费、视频会员多种礼品转不停。',
+                shareIconURL:
+                  'http://openapp.10010.com/ln-app/uploadfile/luck.jpg',
+                shareTitle: '联通手机营业厅金币抽好礼',
+                shareType: 'url',
+                shareURL: 'https://u.10010.cn/qAiyt'
+              },
+              desc: '联通手机营业厅金币抽好礼'
+            }
+          ]
+        })
+      }
+
+      window.shareClient = function(params) {
+        let baseUrl = 'https://u.10010.cn/qAiyt'
+        var shareJson =
+          '{"shareType":"url","shareTitle":"联通手机营业厅金币抽好礼","shareContent":"登录联通手机营业厅，话费、视频会员多种礼品转不停。","shareURL":"' +
+          baseUrl +
+          '","shareIconURL":"http://openapp.10010.com/ln-app/uploadfile/luck.jpg"}'
+        let u = navigator.userAgent
+        if (u.indexOf('Android') > -1 || u.indexOf('Linux') > -1) {
+          //安卓手机
+          js_invoke.interact(
+            '{"type":"share2","url":"","shareList":"sinaweibo,tencentweibo,qzone,wechat,wechatmoments,email,shortmessage,qq","msg":"登录联通手机营业厅，话费、视频会员多种礼品转不停。","shareJson":' +
+              shareJson +
+              '}'
+          )
+        } else if (u.indexOf('iPhone') > -1) {
+          //苹果手机
+          window.location =
+            'clientAction={"type":"share2","url":"","shareList":"sinaweibo,tencentweibo,qzone,wechat,wechatmoments,email,shortmessage,qq","msg":"登录联通手机营业厅，话费、视频会员多种礼品转不停。","shareJson":' +
+            shareJson +
+            '}'
+        }
+      }
+    </script>
+  </body>
+</html>

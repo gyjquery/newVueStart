@@ -7,14 +7,26 @@ const router = new Router({
   routes: [
     {
       path: '/',
-      name: '_home',
-      redirect: '/home',
+      redirect: '/root'
+    },
+    {
+      path: '/root',
+      name: 'root',
       component: () => import('./views/Root/Root.vue'),
       children: [
         {
-          path: '/home',
+          path: '',
+          redirect: '/root/home'
+        },
+        {
+          path: '/root/home',
           name: 'home',
           component: () => import('./views/Home/Home.vue')
+        },
+        {
+          path: '/root/shop',
+          name: 'shop',
+          component: () => import('./views/Shop/Shop.vue')
         }
       ]
     },

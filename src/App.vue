@@ -1,21 +1,32 @@
 <template>
   <div id="app">
-    <span>1235656</span>
     <router-view />
+    <!-- <baidu-map class="bm-view"
+               :center="center"
+               :zoom="zoom"
+               @ready="handler"></baidu-map> -->
   </div>
 </template>
 
 <script>
 export default {
-  name: 'app'
+  data() {
+    return {
+      center: '北京',
+      zoom: 10
+    }
+  },
+  methods: {
+    handler({ BMap, map }) {}
+  }
 }
 </script>
 
-<style>
+<style lang="less">
 #app {
-  background: #000;
-}
-span {
-  background: #0ff;
+  .bm-view {
+    width: 100%;
+    height: 300px;
+  }
 }
 </style>
